@@ -37,4 +37,28 @@ $fa-font-path: "../webfonts" !default;
 @import "~@fortawesome/fontawesome-free/scss/regular";
 @import "~@fortawesome/fontawesome-free/scss/solid";
 @import "~@fortawesome/fontawesome-free/scss/brands";
+
+## comandi git
+git init
+git add *
+git commit -m "first commit"
+git branch -M main
+git remote add origin...
+git push -u origin main
+
+##creo una nuova repo su github da template
+## clono la repo da vscode
+
+composer install
+
+#copia e rinomina file .env example in .env
+
+php artisan key:generate
+
+npm install
+
+# faccio partite i server da riga di comando
+npm run dev(per server Vue)
+php artisan serve (per server Laravel)
 ```
+
