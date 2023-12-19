@@ -5,17 +5,13 @@
 @section('content')
 <main>
     <section class="container">
-        <h1>Products</h1>
-        <div class="row">
-            @foreach($products as $product)
-
-            <div class="col-12 col-md-4 col-lg-3">
-                <div class="card">
-                    <img src="{{$product['src']}}" alt="{{$product['titolo']}}">
-                </div>
-            </div>
-            @endforeach
+        <h1>La Molisana </h1>
+        <div class="row gy-4">
+          <div class="col">
+            Qui andranno carosello  - hero - most popular - commenti
+          </div>
         </div>
+
     </section>
 
 </main>

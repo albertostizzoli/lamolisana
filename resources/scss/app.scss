@@ -1,6 +1,5 @@
 @use './partials/variables' as *;
 
-
 $fa-font-path: "../webfonts" !default;
 
 @import "~@fortawesome/fontawesome-free/scss/fontawesome";
@@ -8,13 +7,25 @@ $fa-font-path: "../webfonts" !default;
 @import "~@fortawesome/fontawesome-free/scss/solid";
 @import "~@fortawesome/fontawesome-free/scss/brands";
 
-
 @import '~bootstrap/scss/bootstrap';
 
-h1{
+h1 {
     color: $text-color;
 }
-
 main{
-    background-image: url('../img/fondo-pag-speciali.jpg');
+    background-image: url('../img/backpage.jpg');
+}
+header {
+    .navbar-nav .nav-link.active {
+        font-weight: bold;
+        color: $text-color;
+    }
+}
+footer{
+    background-image: url('../img/footer-montagne-bottom.jpg');
+}
+#products {
+    img {
+        max-height: 210px;
+    }
 }
