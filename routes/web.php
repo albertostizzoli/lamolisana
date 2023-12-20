@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Arr;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,8 +15,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    //return redirect('/products');
+    //return redirect()->route('products.index');
     return view('home');
 })->name('home');
+
+
 
 Route::get('/products', function () {
     $products = config('db.products');
@@ -24,6 +29,7 @@ Route::get('/products', function () {
 
 Route::get('/products/{id}', function ($id) {
     $products = config('db.products');
+    //cercare prodotto con quell'id
     if ($id >= 0 && $id < count($products)) {
         $product = $products[$id];
         return view('products.show', compact('product'));
@@ -32,20 +38,18 @@ Route::get('/products/{id}', function ($id) {
     }
 })->name('products.show');
 
+
 Route::get('/recipes', function () {
     $recipes = config('db.recipes');
     return view('recipes.index', compact('recipes'));
 })->name('recipes.index');
 
-Route::get('/recipes{id}', function($id){
+Route::get('/recipes/{id}', function ($id) {
     $recipes = config('db.recipes');
-    $recipe = null;
-    foreach($recipes as $item){
-        if($item['idMeal'] == $id){
-            $recipe = $item;
-        }
-    }
-    if($recipe){
+    $recipe = Arr::first($recipes, function ($value, $key) use ($id) {
+        return $value['idMeal'] == $id;
+    });
+    if ($recipe) {
         return view('recipes.show', compact('recipe'));
     } else {
         abort(404);
@@ -53,7 +57,11 @@ Route::get('/recipes{id}', function($id){
 
 })->name('recipes.show');
 
-
-Route::get('/about', function(){
+Route::get('/about', function () {
     return view('pages.about');
-})->name('about');
+}
+)->name('about');
+
+Route::fallback(function () {
+    return redirect()->route('home');
+});
